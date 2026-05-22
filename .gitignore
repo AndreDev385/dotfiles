@@ -1,0 +1,7 @@
+*.local
+.zshrc.local
+.DS_Store
+*.swp
+*.swo
+*~
+.env

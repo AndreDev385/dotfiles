@@ -1,0 +1,12 @@
+#!/bin/bash
+# Create tmux session from current directory or argument
+
+session_name=$(basename "${1:-$PWD}" | tr '.' '_' | sed 's/[[:space:]]/_/g')
+
+tmux new-session -d -s "$session_name" 2>/dev/null
+
+if [ -n "$1" ]; then
+  tmux send-keys -t "$session_name" "cd '$1'" C-m
+fi
+
+tmux attach-session -t "$session_name"
